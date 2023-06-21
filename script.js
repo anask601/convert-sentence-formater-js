@@ -1,33 +1,23 @@
-function convertToSnakeObjToTitleObj() {
-  const sentence = document.getElementById("sentenceInput").value;
-  const result = snakeObjToTitleObj(sentence);
-  document.getElementById("output").innerText = JSON.stringify(
-    result,
-    null,
-    2
-  ).toLowerCase();
-}
-
 function convertToWordWord() {
-  const sentence = document.getElementById("sentenceInput").value;
-  const result = convertToWordWordFormat(sentence);
-  document.getElementById("output").innerText = result.toLowerCase();
+  convertToFormat("word-word");
 }
 
 function convertToUnderscore() {
-  const sentence = document.getElementById("sentenceInput").value;
-  const result = convertToUnderscoreFormat(sentence);
-  document.getElementById("output").innerText = result.toLowerCase();
+  convertToFormat("underscore");
 }
 
-function snakeObjToTitleObj(sentence) {
-  const words = sentence.split(" ");
-  const titleObj = words.reduce((obj, word) => {
-    const camelCaseKey = word.charAt(0).toLowerCase() + word.slice(1);
-    obj[camelCaseKey] = word;
-    return obj;
-  }, {});
-  return titleObj;
+function convertToFormat(format) {
+  const sentence = document.getElementById("sentenceInput").value;
+  let result;
+
+  if (format === "word-word") {
+    result = convertToWordWordFormat(sentence);
+  } else if (format === "underscore") {
+    result = convertToUnderscoreFormat(sentence);
+  }
+
+  result = result.toLowerCase();
+  document.getElementById("output").innerText = result;
 }
 
 function copyToClipboard() {
@@ -42,14 +32,27 @@ function copyToClipboard() {
     });
 }
 
+function reset() {
+  document.getElementById("sentenceInput").value = "";
+  document.getElementById("output").innerText = "";
+}
+
 function convertToWordWordFormat(sentence) {
   const words = sentence.split(" ");
-  const wordWordFormat = words.join("-");
-  return wordWordFormat;
+  const result = words
+    .map((word) => {
+      return word.toLowerCase();
+    })
+    .join("-");
+  return result;
 }
 
 function convertToUnderscoreFormat(sentence) {
   const words = sentence.split(" ");
-  const underscoreFormat = words.join("_");
-  return underscoreFormat;
+  const result = words
+    .map((word) => {
+      return word.toLowerCase();
+    })
+    .join("_");
+  return result;
 }

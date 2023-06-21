@@ -94,9 +94,11 @@ button:hover {
 }
 
 #output {
-  width: fit-content;
+  width: 100%;
+  max-width: 90%;
   margin-top: 10px;
   padding: 10px;
+  overflow: scroll;
   font-family: monospace;
   background: #f7f7f7;
   color: #000000;
