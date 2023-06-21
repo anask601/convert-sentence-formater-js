@@ -1,19 +1,23 @@
 function convertToSnakeObjToTitleObj() {
   const sentence = document.getElementById("sentenceInput").value;
   const result = snakeObjToTitleObj(sentence);
-  document.getElementById("output").innerText = JSON.stringify(result, null, 2);
+  document.getElementById("output").innerText = JSON.stringify(
+    result,
+    null,
+    2
+  ).toLowerCase();
 }
 
 function convertToWordWord() {
   const sentence = document.getElementById("sentenceInput").value;
   const result = convertToWordWordFormat(sentence);
-  document.getElementById("output").innerText = result;
+  document.getElementById("output").innerText = result.toLowerCase();
 }
 
 function convertToUnderscore() {
   const sentence = document.getElementById("sentenceInput").value;
   const result = convertToUnderscoreFormat(sentence);
-  document.getElementById("output").innerText = result;
+  document.getElementById("output").innerText = result.toLowerCase();
 }
 
 function snakeObjToTitleObj(sentence) {
